@@ -67,9 +67,12 @@ void loop()
     clearBuffer2Array();
     count = 0;
 	}
-	char key = keypad.waitForKey();
-	if (key){
-		Serial.println(String(RFID) + "&" + String(key));
+	if (RFID) {
+		int i;
+		char key[3];
+		for (i = 0; i < 4; i = i + 1) {
+			key[i] = keypad.waitForKey();
+		}
+		Serial.println(String(RFID).length() + "&" + String(key));
 	}
-  
 }
